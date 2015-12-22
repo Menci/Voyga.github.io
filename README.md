@@ -1,2 +1,2 @@
 ### voyga.top
-###### Personal Site http://www.voyga.top
+###### Personal Site http://voyga.top
