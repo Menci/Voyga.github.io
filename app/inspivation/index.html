@@ -1,0 +1,113 @@
+<!-- Voyga -->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="author" content="Voyga" />
+    <meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="description" content="Random Color Generator" />
+	<link rel="stylesheet" href="lib/fontAwesome.min.css" />
+	<link rel="stylesheet" href="lib/v.css" />
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="icon" href="icon/icon.png" />
+	<script src="cordova.js"></script>
+	<script src="lib/vue.min.js"></script>
+	<script src="lib/randomColor.min.js"></script>
+	<script src="lib/fastclick.min.js"></script>
+	<script src="lib/slip.min.js"></script>
+	<script src="lib/shake.min.js"></script>
+	<script src="lib/thumbs.min.js"></script>
+	<script src="lib/v.js"></script>
+	<script src="lib/vCordova.js"></script>
+	<script src="lib/vIs.js"></script>
+	<script src="lib/vStorage.js"></script>
+	<script src="lib/vColor.js"></script>
+	<script src="js/main.js"></script>
+	<title>Inspivation</title>
+
+	</head>
+
+<body>
+
+	<div id="background" v-style="background: color" v-on="click: changeColor()" v-class="backgroundHiding: currentPage !== 'background'">
+
+		<p class="center" v-text="color | toRGB"></p>
+
+		<div id="floatBallBox" class="horiCenter">
+
+			<div id="heartBall" class="floatBalls" v-on="touchstart: initializeAnimation(), touchend: addColor(color), click: stopPropagation($event)">
+
+				<i id="heartIcon" class="fa fa-heart" v-style="color: color"></i>
+
+				</div>
+
+			<div id="menuBall" class="floatBalls" v-on="click: currentPage = 'list', click: stopPropagation($event)">
+
+				<i class="fa fa-bars" v-style="color: color"></i>
+
+				</div>
+
+			<div id="settingBall" class="floatBalls" v-on="click: currentPage = 'setting', click: stopPropagation($event)">
+
+				<i class="fa fa-cog" v-style="color: color"></i>
+
+				</div>
+
+			</div>
+			
+		</div>
+
+	<ul id="list" class="pages" v-class="pageShow: currentPage === 'list'">
+
+		<li class="colors" v-style="background: value" v-repeat="value in collection.data" v-on="click: currentPage = 'background', click: changeColor(value)">
+
+			<p class="colorValues vertiCenter" v-text="value | toRGB"></p>
+			<i class="remove vertiCenter fa fa-times" v-on="click: removeColor(value), click: stopPropagation($event)"></i>
+
+			</li>
+				
+		</ul>
+
+	<div id="setting" class="pages" v-class="pageShow: currentPage === 'setting'">
+
+		<div class="center">
+
+			<div id="hueBox">
+
+				<p class="settingTitles" v-style="color: color">HUE</p>
+
+				<div id="hueOptionBox">
+
+				<div id="{{$key + 'Hue'}}" class="hueOptions" v-style="background: hue" v-repeat="hue in hues" v-on="click: changeHue($key)"></div>
+					
+					</div>
+
+				</div>
+
+			<div id="formatBox">
+
+				<p class="settingTitles" v-style="color: color">FORMAT</p>
+
+				<p id="hex" class="formatOptions" v-style="color: hexTextColor" v-on="click: changeFormat('hex')">HEX</p>
+				<p id="rgb" class="formatOptions" v-style="color: rgbTextColor" v-on="click: changeFormat('rgb')">RGB</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	<div id="backBall" class="floatBalls floatBallHide" v-style="background: color" v-on="click: currentPage = 'background'">
+
+		<i class="fa fa-mail-reply"></i>
+
+		</div>
+		
+	</body>
+
+</html>

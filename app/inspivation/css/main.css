@@ -1,0 +1,313 @@
+/* Voyga */
+
+/* GLOBAL */
+
+@font-face
+{
+    font-family: FontAwesome;
+
+    src: url(../lib/FontAwesome.otf);
+}
+@font-face
+{
+    font-family: Adamcg;
+
+    src: url(../font/Adamcg.otf);
+}
+*
+{
+    font-family: Adamcg;
+
+    color: #fafafa;
+}
+body
+{
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    transition: .5s;
+
+    opacity: 0;
+}
+
+/* GLOBAL */
+
+/* MAIN */
+
+#background
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    transition: .25s;
+}
+.backgroundHiding
+{
+    opacity: 0 !important;
+}
+#background p
+{
+    font-size: 48px;
+
+    width: 100%;
+    margin-top: -20px;
+
+    text-align: center;
+}
+#floatBallBox
+{
+    bottom: 48px;
+
+    width: 224px;
+    height: 60px;
+}
+#heartBall
+{
+    left: 0;
+}
+#menuBall
+{
+    left: 50%;
+
+    margin-left: -30px;
+}
+#settingBall
+{
+    right: 0;
+}
+
+/* MAIN */
+
+/* LIST */
+
+#list
+{
+    overflow-y: auto;
+}
+.colors
+{
+    position: relative;
+
+    width: 100%;
+    height: 70px;
+}
+.colors p
+{
+    font-size: 24px;
+
+    left: 32px;
+}
+.colors i
+{
+    font-size: 24px;
+
+    right: 32px;
+}
+
+/* LIST */
+
+/* SETTING */
+
+#setting
+{
+    text-align: center;
+}
+#setting > .center
+{
+    margin-top: -32px;
+}
+.settingTitles
+{
+    font-size: 36px;
+
+    transition: .25s;
+}
+#hueOptionBox
+{
+    position: relative;
+
+    width: 200px;
+    height: 120px;
+    margin: 24px auto 0;
+}
+.hueOptions
+{
+    position: absolute;
+
+    display: inline-block;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+}
+#redHue,
+#greenHue,
+#blueHue
+{
+    top: 0;
+}
+#redHue,
+#yellowHue
+{
+    left: 0;
+}
+#greenHue,
+#purpleHue
+{
+    left: 50%;
+
+    margin-left: -21px;
+}
+#blueHue,
+#randomHue
+{
+    right: 0;
+}
+#yellowHue,
+#purpleHue,
+#randomHue
+{
+    bottom: 0;
+}
+#randomHue
+{
+    background: linear-gradient(135deg, #0fffc7 0, #0fffc7 25%, #25eabc 25%, #25eabc 42.5%, #5f9bef 42.5%, #5f9bef 57.5%, #5286e5 57.5%, #5286e5 75%, #4077dd 75%, #4077dd 100%) !important;
+}
+#formatBox
+{
+    margin-top: 48px;
+}
+.formatOptions
+{
+    font-size: 24px;
+
+    display: inline-block;
+
+    margin-top: 24px;
+
+    transition: .25s;
+
+    color: #999;
+}
+.formatOptions:last-child
+{
+    margin-left: 24px;
+}
+
+/* SETTING */
+
+/* OTHER */
+
+#backBall
+{
+    bottom: 48px;
+    left: 50%;
+
+    margin-left: -30px;
+}
+#backBall i
+{
+    color: #fafafa;
+}
+.pages
+{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    transition: .5s;
+    -webkit-transform: scale(.75) translate3d(0, 0, 0);
+            transform: scale(.75) translate3d(0, 0, 0);
+
+    opacity: 0;
+    background: #fafafa;
+}
+.pageShow
+{
+    z-index: 1 !important;
+
+    -webkit-transform: scale(1) translate3d(0, 0, 0) !important;
+            transform: scale(1) translate3d(0, 0, 0) !important;
+
+    opacity: 1 !important;
+}
+.floatBalls
+{
+    position: absolute;
+    z-index: 2;
+
+    display: inline-block;
+
+    width: 60px;
+    height: 60px;
+
+    transition: .25s;
+    text-align: center;
+
+    border-radius: 50%;
+    background: #fafafa;
+}
+.floatBalls i
+{
+    font-size: 32px;
+
+    display: block;
+
+    margin-top: 16px;
+
+    transition: .25s;
+}
+.floatBallHide
+{
+    z-index: -2;
+
+    -webkit-transform: scale(.5) translate3d(0, 0, 0);
+            transform: scale(.5) translate3d(0, 0, 0);
+
+    opacity: 0;
+}
+
+/* OTHER */
+
+/* ANIMATION */
+
+@-webkit-keyframes beat
+{
+    50%
+    {
+        -webkit-transform: scale(1.25);
+                transform: scale(1.25);
+    }
+    100%
+    {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+}
+
+@keyframes beat
+{
+    50%
+    {
+        -webkit-transform: scale(1.25);
+                transform: scale(1.25);
+    }
+    100%
+    {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+}
+
+/* ANIMATION */

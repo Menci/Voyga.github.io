@@ -1,0 +1,321 @@
+/* Voyga */
+
+/* GLOBAL */
+
+@font-face
+{
+    font-family: GothamRounded;
+
+    src: url(../font/GothamRounded.ttf);
+}
+*
+{
+    font-family: GothamRounded;
+}
+body
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    transition: .5s;
+
+    opacity: 0;
+    background: #37474f;
+}
+.pages
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+}
+
+/* GLOBAL */
+
+/* BATTLEFIELD */
+
+#main > .center
+{
+    margin-top: -6px;
+}
+#battleField
+{
+    position: relative;
+
+    width: 280px;
+    height: 380px;
+    margin: 0 auto;
+    margin-top: 16px;
+    padding: 1px;
+
+    border-radius: 24px;
+    background: #5f6f77;
+    box-shadow: 0 6px #55656d;
+}
+#battleField > .center
+{
+    width: 232px;
+    margin-top: 4px;
+}
+#guessesList
+{
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    width: 184px;
+    height: 224px;
+    margin: 0 auto;
+}
+.guesses
+{
+    width: 100%;
+    height: 94px;
+    margin-bottom: 18px;
+}
+.guessesNumbersBoxes
+{
+    display: inline-block;
+    float: left;
+
+    width: 94px;
+    height: 94px;
+}
+.guessesNumbers
+{
+    font-size: 20px;
+
+    display: inline-block;
+
+    width: 44px;
+    height: 44px;
+    padding-top: 12px;
+
+    text-align: center;
+
+    color: #f4f4f4;
+    border-radius: 12px;
+    background: #4b5b63;
+}
+.guessesNumbers:nth-child(2n+2)
+{
+    margin-left: 6px;
+}
+.guessesNumbers:nth-child(4n+3)
+{
+    margin-top: 6px;
+}
+.sep
+{
+    display: inline-block;
+    float: left;
+
+    width: 4px;
+    height: 64px;
+    margin-top: 15px;
+    margin-left: 16px;
+
+    border-radius: 2px;
+    background: #415159;
+}
+.statusBoxes
+{
+    display: inline-block;
+
+    width: 48px;
+    height: 54px;
+    margin-top: 20px;
+    margin-left: 16px;
+}
+.statusBalls
+{
+    display: inline-block;
+
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+}
+.blackBalls
+{
+    background: #415159;
+}
+.whiteBalls
+{
+    border: solid 3px #415159;
+}
+.statusTexts
+{
+    font-size: 24px;
+
+    display: inline;
+
+    margin-left: 4px;
+
+    color: #f4f4f4;
+}
+#inputBox
+{
+    position: relative;
+
+    width: 100%;
+    height: 72px;
+    margin: 0 auto;
+    margin-top: 12px;
+
+    border-radius: 16px;
+    background: #4b5b63;
+}
+#inputBox > .center
+{
+    width: 198px;
+    height: 42px;
+}
+.inputs
+{
+    font-size: 24px;
+
+    display: inline-block;
+
+    width: 42px;
+    height: 42px;
+    margin-left: 10px;
+    padding-top: 9px;
+
+    text-align: center;
+
+    color: #f4f4f4;
+    border-radius: 12px;
+    background: #415159;
+}
+.inputs:first-child
+{
+    margin-left: 0;
+}
+.inputs:hover
+{
+    cursor: default;
+}
+
+/* BATTLEFIELD */
+
+/* GUESS */
+
+#guessPane
+{
+    position: relative;
+
+    width: 280px;
+    height: 120px;
+    margin: 0 auto;
+    margin-top: 24px;
+    padding: 1px;
+
+    border-radius: 24px;
+    background: #4b5b63;
+    box-shadow: 0 6px #415159;
+}
+#guessPane > .center
+{
+    width: 208px;
+    height: 82px;
+    margin-top: 4px;
+
+    vertical-align: middle;
+}
+#guessBox
+{
+    position: relative;
+
+    display: inline-block;
+    float: left;
+
+    width: 116px;
+    height: 82px;
+}
+.guessBoxHide
+{
+    display: none !important;
+}
+.choices
+{
+    font-size: 16px;
+
+    position: relative;
+
+    display: inline-block;
+
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+    padding-top: 8px;
+
+    text-align: center;
+
+    color: #f4f4f4;
+    border-radius: 8px;
+    background: #5f6f77;
+    box-shadow: 0 4px #55656d;
+}
+.choicesPressing
+{
+    top: 4px !important;
+
+    box-shadow: 0 0 #55656d !important;
+}
+.choices:first-child
+{
+    margin-left: 0;
+}
+.choices:nth-child(4)
+{
+    margin-top: 10px;
+    margin-left: 0;
+}
+.choices:hover
+{
+    cursor: default;
+}
+#goButton
+{
+    font-size: 24px;
+
+    position: relative;
+    top: -4px;
+
+    display: inline-block;
+    float: right;
+
+    width: 72px;
+    height: 54px;
+    margin-top: 10px;
+    padding-top: 4px;
+
+    color: #f4f4f4;
+    border-radius: 16px;
+    background: #ef6360;
+    box-shadow: 0 8px #e05348;
+}
+.goButtonPressing
+{
+    top: 4px !important;
+
+    box-shadow: 0 0 #e65348 !important;
+}
+.restartButton
+{
+    float: none !important;
+    margin-left: 44px !important;
+
+    width: 120px !important;
+    height: 54px !important;
+}
+
+/* GUESS */

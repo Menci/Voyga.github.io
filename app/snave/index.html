@@ -1,0 +1,60 @@
+<!-- Voyga -->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1" />
+    <meta name="author" content="Voyga" />
+    <meta name="description" content="One" />
+    <link rel="stylesheet" href="lib/ionicons.min.css" />
+    <link rel="stylesheet" href="lib/v.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="icon/icon.png" />
+    <script src="cordova.js"></script>
+    <script src="lib/vue.min.js"></script>
+    <script src="lib/thumbs.min.js"></script>
+    <script src="lib/easel.min.js"></script>
+    <script src="lib/fastclick.min.js"></script>
+    <script src="lib/v.js"></script>
+    <script src="lib/vIs.js"></script>
+    <script src="lib/vCordova.js"></script>
+    <script src="lib/vDate.js"></script>
+    <script src="lib/vStorage.js"></script>
+    <script src="js/snave.js"></script>
+    <script src="js/food.js"></script>
+    <script src="js/boss.js"></script>
+    <script src="js/main.js"></script>
+    <title>Snave</title>
+
+    </head>
+
+<body v-on:keydown.65="move('left')" v-on:keydown.68="move('right')" v-on:keydown.87="move('up')" v-on:keydown.83="move('down')">
+
+	<div id="stageBox">
+
+		<div id="stageLayer" class="center" v-bind:class="{ 'stageLayerShow': showingLayer }" v-on:click="init()">
+
+			<p id="text" class="center" v-html="text"></p>
+
+			</div>
+
+        <canvas id="stage" class="center"></canvas>
+
+        </div>
+
+	<div id="buttonBox">
+
+		<div class="buttons horiCenter" v-pressing-class="buttonPressing" v-on:touchstart="move('up')"></div>
+		<div class="buttons vertiCenter" v-pressing-class="buttonPressing" v-on:touchstart="move('left')"></div>
+		<div class="buttons vertiCenter" v-pressing-class="buttonPressing" v-on:touchstart="move('right')"></div>
+		<div class="buttons horiCenter" v-pressing-class="buttonPressing" v-on:touchstart="move('down')"></div>
+
+		</div>
+
+    </body>
+
+</html>

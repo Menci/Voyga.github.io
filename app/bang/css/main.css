@@ -1,0 +1,206 @@
+/* Voyga */
+
+@font-face
+{
+    font-family: Adamcg;
+
+    src: url(../font/Adamcg.otf);
+}
+@font-face
+{
+    font-family: OpenSans;
+
+    src: url(../font/OpenSans.ttf);
+}
+@font-face
+{
+    font-family: Ionicons;
+
+    src: url(../lib/ionicons.ttf);
+}
+*
+{
+    font-family: OpenSans;
+}
+body
+{
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    transition: 1s;
+
+    background: #fff;
+}
+
+/* GLOBAL */
+
+#wrapper
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+}
+.pages
+{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+}
+.pageShow
+{
+    z-index: 1 !important;
+
+    opacity: 1 !important;
+}
+
+/* GLOBAL */
+
+/* FLASH */
+
+#text
+{
+    width: 84%;
+    margin-top: 12px;
+
+    text-align: center;
+}
+
+/* FLASH */
+
+/* SETTING */
+
+#setting
+{
+    font-family: OpenSans;
+
+    text-align: center;
+
+    color: #333;
+    background: #fff;
+}
+#setting .inputTitles:first-child
+{
+    margin-top: 0;
+}
+#setting .titles
+{
+    font-size: 12px;
+
+    margin-top: 24px;
+
+    color: #666;
+}
+#setting .inputs
+{
+    font-size: 20px;
+
+    width: 160px;
+    height: 32px;
+    margin: 0 auto;
+
+    text-align: center;
+
+    color: #333;
+}
+#textInput
+{
+    margin-top: 12px !important;
+}
+#setting .inputs[type='text']
+{
+    border-bottom: solid 2px #333;
+}
+#colorTable
+{
+    width: 240px;
+    height: 24px;
+    margin-top: 16px;
+
+    text-align: center;
+}
+.colorBlocks
+{
+    display: inline-block;
+
+    width: 24px;
+    height: 24px;
+    margin-left: 12px;
+}
+.colorBlocks:first-child
+{
+    margin-left: 0;
+}
+.selectedColor
+{
+    border: solid 3px #333 !important;
+}
+#speedIndicator,
+#sizeIndicator
+{
+    font-size: 16px;
+
+    margin-top: 8px;
+
+    color: #333;
+}
+#speedInput
+{
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+#sizeTitle
+{
+    margin-top: 8px !important;
+}
+#setting .inputs[type='range']::-webkit-slider-thumb
+{
+    width: 16px;
+    height: 16px;
+    margin-top: -5px;
+
+    border: none;
+    border-radius: 50%;
+    background: #333;
+
+    -webkit-appearance: none;
+}
+#setting .inputs[type='range']::-webkit-slider-runnable-track
+{
+    height: 4px;
+
+    border: none;
+    background: #ddd;
+}
+#setting .buttons
+{
+    font-size: 16px;
+
+    display: inline-block;
+
+    width: 84px;
+    height: 36px;
+    margin-top: 64px;
+
+    color: #333;
+    border: solid 2px #333;
+}
+#setting .buttonPressing
+{
+    color: #fff !important;
+    background: #333 !important;
+}
+
+/* SETTING */

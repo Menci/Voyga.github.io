@@ -1,0 +1,69 @@
+<!-- Voyga -->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1" />
+    <meta name="author" content="Voyga" />
+    <meta name="description" content="Bang Bang Bang!!!" />
+    <link rel="stylesheet" href="lib/ionicons.min.css" />
+    <link rel="stylesheet" href="lib/v.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="icon/icon.png" />
+    <script src="cordova.js"></script>
+    <script src="lib/vue.min.js"></script>
+    <script src="lib/fastclick.min.js"></script>
+    <script src="lib/thumbs.min.js"></script>
+    <script src="lib/v.js"></script>
+    <script src="lib/vIs.js"></script>
+    <script src="lib/vStorage.js"></script>
+    <script src="lib/vCordova.js"></script>
+    <script src="js/main.js"></script>
+    <title>Bang!!!</title>
+
+    </head>
+
+<body>
+
+    <div id="flash" class="pages" v-bind:class="{ 'pageShow': currentPage === 'flash' }" v-bind:style="{ 'background': colors[1 - colorParam] }">
+
+        <p id="text" class="center" v-bind:style="{ 'color': colors[colorParam], 'font-family': content.data.font, 'font-size': content.data.size + 'px' }" v-on:click="currentPage = 'setting'" v-text="content.data.text"></p>
+
+        </div>
+
+    <div id="setting" class="pages" v-bind:class="{ 'pageShow': currentPage === 'setting' }">
+
+        <div class="center">
+
+            <p class="titles">TEXT</p>
+            <input id="textInput" class="inputs" type="text" v-model="inputs.text" v-bind:value="content.data.text" />
+
+            <p class="titles">COLOR</p>
+
+            <div id="colorTable">
+
+                <div class="colorBlocks" v-for="color in static.colors" v-bind:class="{ 'selectedColor': inputs.color === color }" v-bind:style="{ 'background': color }" v-on:click="inputs.color = color"></div>
+                    
+                </div>
+
+            <p class="titles">SPEED</p>
+            <p id="speedIndicator" v-text="inputs.speed | speedLevel"></p>
+            <input id="speedInput" class="inputs" type="range" min="100" max="300" step="50" v-model="inputs.speed" />
+
+            <p id="sizeTitle" class="titles">SIZE</p>
+            <p id="sizeIndicator" v-text="inputs.size"></p>
+            <input id="sizeInput" class="inputs" type="range" min="72" max="144" step="4" v-model="inputs.size" />
+
+            <button class="buttons" v-on:click="currentPage = 'flash', save()" v-pressing-class="buttonPressing">OK</button>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

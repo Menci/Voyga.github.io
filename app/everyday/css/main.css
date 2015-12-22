@@ -1,0 +1,502 @@
+/* Voyga */
+
+/* GLOBAL */
+
+@font-face
+{
+    font-family: SourceSansPro-Light;
+
+    src: url(../font/SourceSansPro-Light.ttf);
+}
+@font-face
+{
+    font-family: SourceSansPro-Regular;
+
+    src: url(../font/SourceSansPro-Regular.ttf);
+}
+@font-face
+{
+    font-family: Ionicons;
+
+    src: url(../lib/ionicons.ttf);
+}
+*
+{
+    font-family: SourceSansPro-Light;
+}
+body
+{
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    transition: 1s;
+    text-align: center;
+
+    opacity: 0;
+    background: #f5f5f5;
+}
+
+/* GLOBAL */
+
+/* MAIN */
+
+#main
+{
+    z-index: 0;
+
+    opacity: 1;
+}
+#header
+{
+    position: relative;
+
+    width: 100%;
+    height: 12%;
+
+    background: #f5f5f5;
+}
+#listIcon
+{
+    left: 32px;
+
+    width: 36px;
+    height: 36px;
+    margin-top: 4px;
+
+    border-radius: 50%;
+}
+#listIcon i
+{
+    font-size: 24px;
+
+    color: #888;
+}
+.listIconPressing
+{
+    background: #e3e3e3 !important;
+}
+#statusBall
+{
+    display: inline-block;
+
+    width: 16px;
+    height: 16px;
+
+    border: solid 2px #8cbdfa;
+    border-radius: 50%;
+}
+.statusBallLight
+{
+    background: #8cbdfa !important;
+}
+#statusBall + span
+{
+    display: inline-block;
+
+    width: 3px;
+}
+#habitName
+{
+    font-size: 28px;
+
+    display: inline-block;
+
+    margin-top: 4px;
+
+    color: #777;
+}
+#dayBox
+{
+    position: relative;
+
+    width: 100%;
+    height: 64%;
+}
+#dayBox .center
+{
+    width: 100%;
+}
+#dayCount
+{
+    font-size: 124px;
+
+    display: inline;
+
+    margin-top: 8px;
+
+    color: #8cbdfa;
+}
+#infoBox
+{
+    display: inline-block;
+
+    width: auto;
+    height: auto;
+    margin-left: 6px;
+}
+#days
+{
+    font-size: 26px;
+
+    text-align: left;
+
+    color: #888;
+}
+#sinceDate
+{
+    font-size: 20px;
+
+    margin-top: -4px;
+
+    text-align: left;
+
+    color: #aaa;
+}
+#emptyMessage
+{
+    font-family: SourceSansPro-Regular;
+    font-size: 22px;
+    line-height: 1.6;
+
+    color: #aaa;
+}
+#emptyMessage i
+{
+    font-size: 18px;
+
+    display: inline-block;
+
+    width: 28px;
+    height: 28px;
+    padding: 1px;
+
+    color: #aaa;
+    border-radius: 4px;
+    background: #e8e8e8;
+}
+#accomplishBox
+{
+    position: relative;
+
+    width: 100%;
+    height: 24%;
+
+    background: #f5f5f5;
+}
+#accomplishButton
+{
+    font-size: 16px;
+
+    width: 184px;
+    height: 42px;
+    margin: -8px auto 0;
+
+    color: #8cbdfa;
+    border: solid 2px #8cbdfa;
+    border-radius: 21px;
+}
+.accomplished
+{
+    width: 124px !important;
+
+    color: #f5f5f5 !important;
+    background: #8cbdfa !important;
+}
+
+/* MAIN */
+
+/* SETTING */
+
+#settingBox
+{
+    position: absolute;
+    top: -132px;
+
+    width: 100%;
+    height: 132px;
+
+    transition: -webkit-transform .5s;
+    transition:         transform .5s;
+}
+.setting
+{
+    -webkit-transform: translate3d(0, 132px, 0) !important;
+            transform: translate3d(0, 132px, 0) !important;
+}
+#settingBox > .center
+{
+    margin-top: 6px;
+}
+#settingBox .boxes
+{
+    width: 240px;
+}
+.settingTitles
+{
+    font-family: SourceSansPro-Regular;
+    font-size: 16px;
+
+    color: #aaa;
+}
+.buttons
+{
+    font-family: SourceSansPro-Regular;
+    font-size: 18px;
+
+    display: inline-block;
+
+    height: 38px;
+    margin: 12px auto 0;
+
+    border: solid 2px;
+    border-radius: 18px;
+}
+#deleteBox
+{
+    margin-top: 20px;
+
+    transition: .5s;
+}
+.deleting
+{
+    -webkit-transform: translateY(-72px) !important;
+            transform: translateY(-72px) !important;
+
+    opacity: 0 !important;
+}
+#deleteButton
+{
+    width: 80px;
+
+    color: #ef6360;
+    border-color: #ef6360;
+}
+.redButtonPressing
+{
+    color: #f5f5f5 !important;
+    background: #ef6360 !important;
+}
+#confirmBox
+{
+    position: absolute;
+    bottom: 0;
+
+    transition: .5s;
+    -webkit-transform: translateY(72px);
+            transform: translateY(72px);
+
+    opacity: 0;
+}
+.confirming
+{
+    -webkit-transform: translateY(0) !important;
+            transform: translateY(0) !important;
+
+    opacity: 1 !important;
+}
+#noButton
+{
+    width: 50px;
+
+    color: #ef6360;
+    border-color: #ef6360;
+}
+#yesButton
+{
+    width: 58px;
+    margin-left: 12px;
+
+    color: #ef6360;
+    border-color: #ef6360;
+}
+
+/* SETTING */
+
+/* LIST */
+
+#list
+{
+    -webkit-transform: translate3d(0, 0, 0) scale(.8);
+            transform: translate3d(0, 0, 0) scale(.8);
+}
+#listTitle
+{
+    font-family: SourceSansPro-Regular;
+    font-size: 20px;
+
+    margin-top: 48px;
+
+    text-align: center;
+
+    color: #aaa;
+}
+#listBox
+{
+    width: 100%;
+    height: 360px;
+    margin-top: 24px;
+}
+.listHabits
+{
+    position: relative;
+
+    width: 100%;
+    height: 120px;
+}
+.listHabitsPressing
+{
+    background: #f1f1f1 !important;
+}
+.listHabitTextBoxes
+{
+    position: absolute;
+    left: 54px;
+
+    width: auto;
+    height: 60px;
+
+    text-align: left;
+}
+.listHabitTitles
+{
+    font-size: 36px;
+
+    color: #888;
+}
+.listHabitStreaks
+{
+    font-size: 18px;
+    line-height: .8;
+
+    color: #aaa;
+}
+.listHabitGoIcon
+{
+    right: 54px;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+    background: #eee;
+}
+.listHabitGoIcon i
+{
+    font-size: 18px;
+
+    color: #aaa;
+}
+#addIcon
+{
+    position: absolute;
+    bottom: 48px;
+
+    width: 42px;
+    height: 42px;
+
+    transition: .5s;
+
+    border-radius: 50%;
+    background: #8cbdfa;
+}
+#addIcon i
+{
+    font-size: 40px;
+
+    color: #f5f5f5;
+}
+.addingIcon
+{
+    -webkit-transform: translate3d(-50%, -120px, 0) rotate(45deg) !important;
+            transform: translate3d(-50%, -120px, 0) rotate(45deg) !important;
+}
+#addBox
+{
+    position: absolute;
+    bottom: -132px;
+
+    width: 100%;
+    height: 144px;
+
+    transition: .5s;
+
+    opacity: 0;
+}
+#addBox > .center
+{
+    margin-top: -2px;
+}
+.addingBox
+{
+    -webkit-transform: translate3d(-50%, -144px, 0) !important;
+            transform: translate3d(-50%, -144px, 0) !important;
+
+    opacity: 1 !important;
+}
+.inputs
+{
+    font-family: SourceSansPro-Regular;
+    font-size: 18px;
+
+    height: 32px;
+    margin: 0 auto;
+
+    text-align: center;
+
+    color: #aaa;
+    border-bottom: solid 2px #8cbdfa;
+}
+#newHabitname
+{
+    width: 108px;
+}
+#addButton
+{
+    width: 58px;
+    margin-top: 16px;
+
+    color: #8cbdfa;
+    border-color: #8cbdfa;
+}
+.bludButtonPressing
+{
+    color: #f5f5f5 !important;
+    background: #8cbdfa !important;
+}
+
+/* LIST */
+
+/* OTHER */
+
+.pages
+{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    transition: .5s;
+
+    opacity: 0;
+    background: #f5f5f5;
+}
+.pageShow
+{
+    z-index: 1 !important;
+
+    -webkit-transform: translate3d(0, 0, 0) scale(1) !important;
+            transform: translate3d(0, 0, 0) scale(1) !important;
+
+    opacity: 1 !important;
+}
+.disappear
+{
+    opacity: 0 !important;
+}
+
+/* OTHER */

@@ -1,0 +1,99 @@
+<!-- Voyga -->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="author" content="Voyga" />
+    <meta name="description" content="Death calculator" />
+    <link rel="stylesheet" href="lib/v.css" />
+    <link rel="stylesheet" href="lib/ionicons.min.css">
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="icon/icon.png" />
+    <script src="cordova.js"></script>
+    <script src="lib/vue.min.js"></script>
+    <script src="lib/fastclick.min.js"></script>
+    <script src="lib/thumbs.min.js"></script>
+    <script src="lib/v.js"></script>
+    <script src="lib/vDate.js"></script>
+    <script src="lib/vCordova.js"></script>
+    <script src="lib/vIs.js"></script>
+    <script src="lib/vStorage.js"></script>
+    <script src="js/main.js"></script>
+    <title>Sunset</title>
+
+    </head>
+
+<body v-bind:style="{ 'background': static.colors[colorParam][0] }">
+
+    <div id="setting" v-bind:class="{ 'setting': status.setting }">
+
+        <div class="center">
+
+            <p class="inputTitles">BIRTHDAY</p>
+            <input id="yearInput" class="inputs" type="tel" v-model="inputs.year" /><p class="slashs">/</p>
+            <input id="monthInput" class="inputs" type="tel" v-model="inputs.month" /><p class="slashs">/</p>
+            <input id="dateInput" class="inputs" type="tel" v-model="inputs.date" />
+
+            <p class="inputTitles">LIFESPAN</p>
+            <p id="lifespanIndicator" v-text="inputs.lifespan"></p>
+            <input id="lifespanInput" type="range" min="0" max="100" step="1" v-model="inputs.lifespan" v-on:input="save()" />
+
+            <p class="inputTitles">DISPLAY</p>
+            <button class="buttons" v-bind:style="{ 'color': display.data === 'left' ? static.colors[colorParam][0] : '#f8f8f8', 'background': display.data === 'left' ? '#f8f8f8' : 'none' }" v-on:click="display.set('left'), status.setting = false, go()">LEFT</button>
+            <button id="upButton" class="buttons" v-bind:style="{ 'color': display.data === 'lived' ? static.colors[colorParam][0] : '#f8f8f8', 'background': display.data === 'lived' ? '#f8f8f8' : 'none' }" v-on:click="display.set('lived'), status.setting = false, go()">LIVED</button>
+            <button class="buttons" v-bind:style="{ 'color': display.data === 'age' ? static.colors[colorParam][0] : '#f8f8f8', 'background': display.data === 'age' ? '#f8f8f8' : 'none' }" v-on:click="display.set('age'), status.setting = false, go()">AGE</button>
+            
+            </div>
+        
+        </div>
+
+    <div id="main" v-bind:class="{ 'setting': status.setting }">
+
+        <header id="header">
+
+            <p id="title" class="center" v-on:click="status.setting = !status.setting, save()">SUNSET</p>
+            
+            </header>
+
+            <div id="content">
+
+                <div class="center">
+
+                    <div id="graphicBox">
+                            
+                        <div id="sun" v-bind:style="{ 'background': static.colors[colorParam][1], 'left': (canvasWidth - 132) * ratio + 'px', top: Math.abs(ratio - 0.5) * 2 * (canvasHeight - 132) + 'px' }"></div>
+
+                        <div id="sea" class="horiCenter" v-bind:style="{ 'background': static.colors[colorParam][0] }">
+
+                            <div class="lines horiCenter"></div>
+                            <div class="lines vertiCenter"></div>
+                            <div class="lines vertiCenter"></div>
+                            <div class="lines"></div>
+                            <div class="lines"></div>
+                            
+                            </div>
+                        
+                        </div>
+
+                    <div id="textBox">
+                    
+                        <p id="timer" v-text="displayNumber"></p>
+                        <p id="dis" v-text="displayText"></p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+    </body>
+
+</html>

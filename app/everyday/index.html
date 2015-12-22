@@ -1,0 +1,157 @@
+<!-- Voyga -->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1" />
+    <meta name="author" content="Voyga" />
+    <meta name="description" content="Do one thing everyday" />
+    <link rel="stylesheet" href="lib/v.css" />
+    <link rel="stylesheet" href="lib/ionicons.min.css">
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="icon/icon.png" />
+    <script src="cordova.js"></script>
+    <script src="lib/vue.min.js"></script>
+    <script src="lib/fastclick.min.js"></script>
+    <script src="lib/thumbs.min.js"></script>
+    <script src="lib/v.js"></script>
+    <script src="lib/vDate.js"></script>
+    <script src="lib/vCordova.js"></script>
+    <script src="lib/vIs.js"></script>
+    <script src="lib/vStorage.js"></script>
+    <script src="js/main.js"></script>
+    <title>Everyday</title>
+
+    </head>
+
+<body>
+
+    <div id="main" class="pages" v-bind:class="{ 'setting': status.setting }">
+
+        <div id="settingBox">
+
+            <div class="center">
+
+                <div id="deleteBox" class="boxes" v-bind:class="{ 'deleting': status.deleting }">
+
+                    <p class="settingTitles">Delete</p>
+                    <button id="deleteButton" class="buttons" v-on:click="status.deleting = true" v-pressing-class="redButtonPressing">DELETE</button>
+
+                    </div>
+
+                <div id="confirmBox" class="boxes" v-bind:class="{ 'confirming': status.deleting }">
+
+                    <p class="settingTitles">Sure?</p>
+                    <button id="noButton" class="buttons" v-on:click="status.deleting = false" v-pressing-class="redButtonPressing">NO</button>
+                    <button id="yesButton" class="buttons" v-on:click="delete(), status.setting = false" v-pressing-class="redButtonPressing">YES</button>
+                        
+                    </div>
+
+                </div>
+                
+            </div>
+
+        <header id="header">
+
+            <div id="listIcon" class="vertiCenter" v-pressing-class="listIconPressing" v-on:click="currentPage = 'list', status.setting = false">
+
+                <i class="icon ion-navicon center"></i>
+                    
+                </div>
+
+            <div class="center" v-on:click="status.setting = !status.setting" v-if="!empty">
+
+                <div id="statusBall" v-bind:class="{ 'statusBallLight': accomplished }"></div>
+                <span></span>
+                <p id="habitName" v-text="currentHabit.name"></p>
+
+                </div>
+
+            </header>
+
+        <div id="dayBox">
+
+            <div class="center" v-if="!empty">
+
+                <p id="dayCount" v-text="streak"></p>
+
+                <div id="infoBox">
+
+                    <p id="days" v-text="'day' | pluralityCheck streak | uppercase"></p>
+                    <p id="sinceDate" v-text="currentHabit.start | removeYear"></p>
+
+                    </div>
+
+                </div>
+
+            <div class="center" v-if="empty">
+
+                <p id="emptyMessage">Please touch <i class="icon ion-navicon-round"></i><br>and <i class="icon ion-plus"></i> a habit</p>
+
+                </div>
+                
+            </div>
+
+        <div id="accomplishBox" v-if="!empty">
+
+            <div class="center"> 
+
+                <button id="accomplishButton" v-on:click="accomplish()" v-bind:class="{ 'accomplished': accomplished }" v-text="accomplished ? 'Accomplished' : 'Accomplished Today ?'"></button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    <div id="list" class="pages" v-bind:class="{ 'pageShow': currentPage === 'list' }">
+
+        <p id="listTitle" v-on:click="currentPage = 'main'">~ Habits ~</p>
+            
+        <div id="listBox">
+
+            <div class="listHabits" v-for="habit in habits.data" v-on:click="habitIndex.set($index), currentPage = 'main'" v-pressing-class="listHabitsPressing">
+
+                <div class="listHabitTextBoxes vertiCenter">
+
+                    <p class="listHabitTitles" v-bind:style="{ 'color': ifAccomplished($index) ? '#8cbdfa' : '#888' }" v-text="habit.name"></p>
+                    <p class="listHabitStreaks" v-text="getStreak($index) + ' day' | pluralityCheck getStreak($index)"></p>
+                        
+                    </div>
+
+                <div class="listHabitGoIcon vertiCenter">
+
+                    <i class="icon ion-android-arrow-forward center"></i>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+        <div id="addIcon" v-if="!full" class="horiCenter" v-bind:class="{ 'addingIcon': status.adding }" v-on:click="status.adding = !status.adding">
+
+            <i class="icon ion-ios-plus-empty center"></i>
+                
+            </div>
+
+        <div id="addBox" class="horiCenter" v-if="!full" v-bind:class="{ 'addingBox': status.adding }">
+
+            <div class="center">
+
+                <input id="newHabitname" class="inputs" placeholder="new habit" type="text" v-model="inputs.habitName" />
+                <button id="addButton" class="buttons" v-on:click="add()" v-pressing-class="bludButtonPressing">ADD</button>
+
+                </div>
+            
+            </div>
+            
+        </div>
+        
+    </body>
+
+</html>
