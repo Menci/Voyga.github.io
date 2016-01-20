@@ -1,56 +1,74 @@
 // Voyga
 
-;(function() {
+function Food(config) {
 
-	function Food(config) {
+	this.shape = new createjs.Shape();
+	config.stage.addChild(this.shape);
 
-		this.shape = new createjs.Shape();
-		config.stage.addChild(this.shape);
+	this.color = "#42a3cc";
+	this.width = 20;
+	this.height = 20;
+	this.initX = Math.floor(this.shape.stage.canvas.width * 0.7);
+	this.initY = Math.floor(this.shape.stage.canvas.height * 0.2);
+	this.init();
 
-		this.color = "#42a3cc";
-		this.width = 20;
-		this.height = 20;
-		this.initX = Math.floor(this.shape.stage.canvas.width * 0.7);
-		this.initY = Math.floor(this.shape.stage.canvas.height * 0.2);
-		this.init();
+	this.shape.name = "food";
+	this.shape.graphics.beginFill(this.color).drawRect(0, 0, this.width, this.height);
 
-		this.shape.name = "food";
-		this.shape.graphics.beginFill(this.color).drawRect(0, 0, this.width, this.height);
+}
 
-	}
+Food.prototype = {
 
-	Food.prototype = {
+	init() {
 
-		init: function() {
+		this.shape.x = this.initX;
+		this.shape.y = this.initY;
 
-			this.shape.x = this.initX;
-			this.shape.y = this.initY;
+	},
 
-		},
+	changePos(avoidX, avoidY) {
 
-		changePos: function() {
+		let x = Math.floor(10 + (this.shape.stage.canvas.width - this.width - 20) * Math.random());
+		let y = Math.floor(10 + (this.shape.stage.canvas.height - this.height - 20) * Math.random());
 
-			this.shape.x = Math.floor(10 + (this.shape.stage.canvas.width - this.width - 20) * Math.random());
-			this.shape.y = Math.floor(10 + (this.shape.stage.canvas.height - this.height - 20) * Math.random());
+		const generatePos = () => {
 
-		},
+			x = Math.floor(10 + (this.shape.stage.canvas.width - this.width - 20) * Math.random());
+			y = Math.floor(10 + (this.shape.stage.canvas.height - this.height - 20) * Math.random());
 
-		appear: function() {
+			if (Math.abs(x - avoidX) < 48 || Math.abs(y - avoidY) < 48) {
 
-			this.shape.visible = true;
-			this.shape.stage.update();
+				generatePos();
 
-		},
+			}
 
-		disappear: function() {
+		};
 
-			this.shape.visible = false;
-			this.shape.stage.update();
+		if (avoidX && avoidY) {
+
+			generatePos();
 
 		}
 
-	};
+		this.shape.x = x;
+		this.shape.y = y;
 
-	window.Food = Food;
+	},
 
-})();
+	appear() {
+
+		this.shape.visible = true;
+		this.shape.stage.update();
+
+	},
+
+	disappear() {
+
+		this.shape.visible = false;
+		this.shape.stage.update();
+
+	}
+
+};
+
+export default Food;

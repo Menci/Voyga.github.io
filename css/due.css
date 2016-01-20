@@ -21,6 +21,34 @@ body
 
     background: #373737;
 }
+.center
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+.vertiCenter
+{
+    position: absolute;
+    top: 50%;
+
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+.horiCenter
+{
+    position: absolute;
+    left: 50%;
+
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+/* GLOBAL */
+
 #upperArea
 {
     width: 100%;

@@ -1,0 +1,74 @@
+@font-face {
+  font-family: BrandonGrotesque;
+  src: url(../font/BrandonGrotesque-Bold.otf); }
+
+body {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: .5s;
+  text-align: center;
+  opacity: 0;
+  background: #35404c; }
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+
+.vertiCenter {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.horiCenter {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+#stageBox {
+  position: relative;
+  margin: 32px auto 0; }
+  #stageBox #stageLayer {
+    font-size: 144px;
+    z-index: -1;
+    width: calc(100% - 32px);
+    height: calc(100% - 32px);
+    opacity: 0;
+    background: #26313d; }
+    #stageBox #stageLayer.show {
+      z-index: 1 !important;
+      opacity: 1 !important; }
+    #stageBox #stageLayer .text {
+      font-family: BrandonGrotesque;
+      font-size: 1em;
+      margin-top: 8px;
+      color: #35404c; }
+  #stageBox #stage {
+    border: solid 4px #26313d; }
+
+#buttonBox {
+  position: relative;
+  margin: 24px auto 0; }
+
+.buttons {
+  border: solid 4px #26313d; }
+  .buttons.pressing {
+    background: #26313d !important; }
+
+.buttons:nth-child(1) {
+  top: 0; }
+
+.buttons:nth-child(2) {
+  left: 0; }
+
+.buttons:nth-child(3) {
+  right: 0; }
+
+.buttons:nth-child(4) {
+  bottom: 0; }

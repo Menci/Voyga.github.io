@@ -1,0 +1,74 @@
+// Voyga
+
+@import 'global';
+
+#battlefield
+{
+    background: $back;
+    #stageBox
+    {
+        position: relative;
+
+        margin: 0 auto;
+        #stageLayer
+        {
+            font-size: 144px;
+
+            z-index: -1;
+
+            width: calc(100% - 32px);
+            height: calc(100% - 32px);
+
+            opacity: 0;
+            background: $gray;
+            &.show
+            {
+                z-index: 1 !important;
+
+                opacity: 1 !important;
+            }
+            .text
+            {
+                font-size: 1em;
+
+                margin-top: 8px;
+
+                color: $back;
+            }
+        }
+        #stage
+        {
+            border: solid 4px $gray;
+        }
+    }
+    #buttonBox
+    {
+        position: relative;
+
+        margin: 24px auto 0;
+    }
+    .buttons
+    {
+        border: solid 4px $gray;
+        &.pressing
+        {
+            background: $gray !important;
+        }
+    }
+    .buttons:nth-child(1)
+    {
+        top: 0;
+    }
+    .buttons:nth-child(2)
+    {
+        left: 0;
+    }
+    .buttons:nth-child(3)
+    {
+        right: 0;
+    }
+    .buttons:nth-child(4)
+    {
+        bottom: 0;
+    }
+}
