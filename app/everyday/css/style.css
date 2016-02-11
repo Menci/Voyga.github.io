@@ -1,0 +1,358 @@
+@font-face {
+  font-family: SourceSansPro-Light;
+  src: url(../font/SourceSansPro-Light.ttf); }
+
+@font-face {
+  font-family: SourceSansPro-Regular;
+  src: url(../font/SourceSansPro-Regular.ttf); }
+
+* {
+  font-family: SourceSansPro-Light; }
+
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
+  text-align: center;
+  opacity: 0;
+  background: #f5f5f5; }
+
+p:hover {
+  cursor: default; }
+
+.page {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: .5s;
+  -webkit-transform: translate3d(0, 0, 0) scale(0.8);
+  transform: translate3d(0, 0, 0) scale(0.8);
+  opacity: 0;
+  background: #f5f5f5; }
+  .page.show {
+    z-index: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1; }
+
+.buttons, #list .addBox > .center .button {
+  font-family: SourceSansPro-Regular;
+  font-size: 18px;
+  display: inline-block;
+  height: 38px;
+  margin: 12px auto 0;
+  border: solid 2px;
+  border-radius: 18px; }
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+
+.horiCenter {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+.vertiCenter, #main .wrapper .header .iconBox, #main .wrapper .emptymsg, #list .list .item .iconBox, #list .list .item .textBox {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+@font-face {
+  font-family: SourceSansPro-Light;
+  src: url(../font/SourceSansPro-Light.ttf); }
+
+@font-face {
+  font-family: SourceSansPro-Regular;
+  src: url(../font/SourceSansPro-Regular.ttf); }
+
+* {
+  font-family: SourceSansPro-Light; }
+
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
+  text-align: center;
+  opacity: 0;
+  background: #f5f5f5; }
+
+p:hover {
+  cursor: default; }
+
+.page {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: .5s;
+  -webkit-transform: translate3d(0, 0, 0) scale(0.8);
+  transform: translate3d(0, 0, 0) scale(0.8);
+  opacity: 0;
+  background: #f5f5f5; }
+  .page.show {
+    z-index: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1; }
+
+.buttons, #list .addBox > .center .button {
+  font-family: SourceSansPro-Regular;
+  font-size: 18px;
+  display: inline-block;
+  height: 38px;
+  margin: 12px auto 0;
+  border: solid 2px;
+  border-radius: 18px; }
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+
+.horiCenter {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+.vertiCenter, #main .wrapper .header .iconBox, #main .wrapper .emptymsg, #list .list .item .iconBox, #list .list .item .textBox {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+#main {
+  z-index: 0;
+  -webkit-transform: translate3d(0, 0, 0) scale(1);
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1; }
+  #main .settingBox {
+    position: absolute;
+    top: -132px;
+    left: 0;
+    width: 100%;
+    height: 132px;
+    transition: -webkit-transform .5s;
+    transition: transform .5s;
+    background: #ef6360; }
+    #main .settingBox.setting {
+      -webkit-transform: translate3d(0, 132px, 0);
+      transform: translate3d(0, 132px, 0); }
+  #main .wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    #main .wrapper .header {
+      position: relative;
+      width: 100%;
+      height: 12%;
+      background: #f5f5f5; }
+      #main .wrapper .header .iconBox {
+        left: 32px;
+        width: 36px;
+        height: 36px;
+        margin-top: 4px;
+        border-radius: 50%; }
+        #main .wrapper .header .iconBox.pressing {
+          background: #e3e3e3; }
+        #main .wrapper .header .iconBox .icon {
+          font-size: 24px;
+          color: #888; }
+      #main .wrapper .header .ball {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: solid 2px #8cbdfa;
+        border-radius: 50%; }
+        #main .wrapper .header .ball + span {
+          display: inline-block;
+          width: 4px; }
+        #main .wrapper .header .ball.light {
+          background: #8cbdfa; }
+      #main .wrapper .header .title {
+        font-size: 28px;
+        display: inline-block;
+        margin-top: 4px;
+        color: #777; }
+    #main .wrapper .day {
+      position: relative;
+      width: 100%;
+      height: 64%;
+      background: #f5f5f5; }
+      #main .wrapper .day > .center {
+        width: 100%; }
+        #main .wrapper .day > .center .count {
+          font-size: 124px;
+          display: inline;
+          margin-top: 8px;
+          color: #8cbdfa; }
+        #main .wrapper .day > .center .info {
+          display: inline-block;
+          width: auto;
+          height: auto;
+          margin-left: 6px; }
+          #main .wrapper .day > .center .info .days {
+            font-size: 26px;
+            text-align: left;
+            color: #888; }
+          #main .wrapper .day > .center .info .since {
+            font-size: 20px;
+            margin-top: -4px;
+            text-align: left;
+            color: #aaa; }
+    #main .wrapper .accomplish {
+      position: relative;
+      width: 100%;
+      height: 24%;
+      background: #f5f5f5; }
+      #main .wrapper .accomplish > .center {
+        width: 100%; }
+        #main .wrapper .accomplish > .center .button {
+          font-size: 16px;
+          width: 184px;
+          height: 42px;
+          margin: -8px auto 0;
+          color: #8cbdfa;
+          border: solid 2px #8cbdfa;
+          border-radius: 21px; }
+          #main .wrapper .accomplish > .center .button.accomplished {
+            width: 124px;
+            color: #f5f5f5;
+            background: #8cbdfa; }
+    #main .wrapper .emptymsg {
+      width: 100%; }
+      #main .wrapper .emptymsg p {
+        font-family: SourceSansPro-Regular;
+        text-align: center;
+        vertical-align: middle;
+        color: #aaa; }
+        #main .wrapper .emptymsg p:nth-child(1) {
+          font-size: 24px; }
+        #main .wrapper .emptymsg p:nth-child(2) {
+          font-size: 18px;
+          margin-top: 4px;
+          color: #bbb; }
+        #main .wrapper .emptymsg p .iconBox {
+          position: relative;
+          top: 6px;
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          margin: 0 2px 0 2px;
+          border-radius: 3px;
+          background: #eee; }
+          #main .wrapper .emptymsg p .iconBox .icon {
+            font-size: 16px;
+            margin-left: 1px;
+            color: #aaa; }
+
+#list > .title {
+  font-family: SourceSansPro-Regular;
+  font-size: 20px;
+  margin-top: 48px;
+  text-align: center;
+  color: #aaa; }
+
+#list .list {
+  width: 100%;
+  height: 360px;
+  margin-top: 24px; }
+  #list .list .item {
+    position: relative;
+    width: 100%;
+    height: 120px; }
+    #list .list .item.pressing {
+      background: #f1f1f1; }
+    #list .list .item .iconBox {
+      right: 54px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #eee; }
+      #list .list .item .iconBox .icon {
+        font-size: 18px;
+        color: #aaa; }
+    #list .list .item .textBox {
+      position: absolute;
+      left: 54px;
+      width: auto;
+      height: 60px;
+      text-align: left; }
+      #list .list .item .textBox .title {
+        font-size: 36px;
+        color: #888; }
+        #list .list .item .textBox .title.current {
+          color: #8cbdfa; }
+      #list .list .item .textBox .streak {
+        font-size: 18px;
+        line-height: .8;
+        margin-top: 3px;
+        color: #aaa; }
+
+#list .addIcon {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  width: 42px;
+  height: 42px;
+  margin-left: -21px;
+  transition: .5s;
+  border-radius: 50%;
+  background: #8cbdfa; }
+  #list .addIcon.adding {
+    -webkit-transform: translate3d(0, -120px, 0) rotate(45deg);
+    transform: translate3d(0, -120px, 0) rotate(45deg); }
+  #list .addIcon .icon {
+    font-size: 40px;
+    color: #f5f5f5; }
+
+#list .addBox {
+  position: absolute;
+  bottom: -144px;
+  width: 100%;
+  height: 144px;
+  transition: .5s;
+  opacity: 0; }
+  #list .addBox.adding {
+    -webkit-transform: translate3d(0, -144px, 0);
+    transform: translate3d(0, -144px, 0);
+    opacity: 1; }
+  #list .addBox > .center {
+    width: 100%;
+    margin-top: -16px; }
+    #list .addBox > .center .input {
+      font-family: SourceSansPro-Regular;
+      font-size: 18px;
+      width: 108px;
+      height: 32px;
+      margin: 0 auto;
+      text-align: center;
+      color: #aaa;
+      border-bottom: solid 2px #8cbdfa; }
+    #list .addBox > .center .button {
+      width: 58px;
+      margin-top: 16px;
+      color: #8cbdfa;
+      border-color: #8cbdfa; }
+      #list .addBox > .center .button.pressing {
+        color: #f5f5f5;
+        background: #8cbdfa; }
