@@ -1,0 +1,74 @@
+// Voyga
+
+#main
+{
+    @extend .page;
+    .bar
+    {
+        position: absolute;
+        top: 0;
+
+        height: 8px;
+
+        background: $pink;
+    }
+    .question
+    {
+        font-size: 72px;
+
+        margin-top: -12px;
+
+        letter-spacing: 24px;
+
+        color: $white;
+
+        @extend .center;
+        > .answer
+        {
+            opacity: 0;
+            color: $green;
+            &.showing
+            {
+                opacity: 1;
+            }
+        }
+    }
+    .answerButton
+    {
+        font-size: 20px;
+
+        bottom: 48px;
+
+        width: 120px;
+        height: 48px;
+        padding-bottom: 1px;
+
+        color: $white;
+        border-radius: 32px;
+
+        @extend .button;
+        @extend .horiCenter;
+    }
+    .nextButton
+    {
+        font-size: 32px;
+
+        right: 64px;
+
+        width: 54px;
+        height: 54px;
+        margin-top: -12px;
+        padding-bottom: 5px;
+        padding-left: 2px;
+
+        opacity: 0;
+        border-radius: 50%;
+
+        @extend .button;
+        @extend .vertiCenter;
+        &.showing
+        {
+            opacity: 1;
+        }
+    }
+}

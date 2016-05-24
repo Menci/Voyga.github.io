@@ -1,0 +1,101 @@
+@font-face {
+  font-family: BrandonGrotesque-Regular;
+  src: url(../font/BrandonGrotesque-Regular.ttf); }
+
+@font-face {
+  font-family: BrandonGrotesque-Bold;
+  src: url(../font/BrandonGrotesque-Bold.ttf); }
+
+@font-face {
+  font-family: BrandonGrotesque-Light;
+  src: url(../font/BrandonGrotesque-Light.ttf); }
+
+@font-face {
+  font-family: BrandonGrotesque-Black;
+  src: url(../font/BrandonGrotesque-Black.otf); }
+
+* {
+  font-family: BrandonGrotesque-Bold; }
+
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
+  opacity: 0;
+  background: #49546e; }
+
+p:hover {
+  cursor: default; }
+
+.page, #main {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: #49546e; }
+
+.button, #main .answerButton, #main .nextButton {
+  color: #fafafa;
+  background: #414c66; }
+
+.center, #main .question {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+
+.horiCenter, #main .answerButton {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+.vertiCenter, #main .nextButton {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+#main .bar {
+  position: absolute;
+  top: 0;
+  height: 8px;
+  background: #ffb4d2; }
+
+#main .question {
+  font-size: 72px;
+  margin-top: -12px;
+  letter-spacing: 24px;
+  color: #fafafa; }
+  #main .question > .answer {
+    opacity: 0;
+    color: #a6fdca; }
+    #main .question > .answer.showing {
+      opacity: 1; }
+
+#main .answerButton {
+  font-size: 20px;
+  bottom: 48px;
+  width: 120px;
+  height: 48px;
+  padding-bottom: 1px;
+  color: #fafafa;
+  border-radius: 32px; }
+
+#main .nextButton {
+  font-size: 32px;
+  right: 64px;
+  width: 54px;
+  height: 54px;
+  margin-top: -12px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  opacity: 0;
+  border-radius: 50%; }
+  #main .nextButton.showing {
+    opacity: 1; }
