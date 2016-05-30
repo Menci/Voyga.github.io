@@ -1,31 +1,7 @@
 // Voyga
 
-new Vue({
+V.ready(function() {
 
-	el: "body",
-
-	data: {
-
-		// ...
-
-	},
-
-	methods: {
-
-		// ...
-
-	},
-
-	computed: {
-
-		// ...
-
-	},
-
-	ready: {
-
-		V("body").appear();
-
-	}
+	V("body").appear();
 
 });

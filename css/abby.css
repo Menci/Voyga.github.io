@@ -22,6 +22,9 @@ body
 {
     overflow: hidden;
 
+    transition: .5s;
+
+    opacity: 0;
     background: #d5ecff;
 }
 .center
@@ -99,8 +102,10 @@ body
     width: 540px;
     height: auto;
 }
-@media (max-width: 720px) {
-	#cat {
-		width: 72%;
-	}
+@media (max-width: 720px)
+{
+    #cat
+    {
+        width: 72%;
+    }
 }
