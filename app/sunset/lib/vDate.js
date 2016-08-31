@@ -6,82 +6,82 @@
 
 	var Utils = {
 
-		ONEDAY: 24 * 60 * 60 * 1000,
+			ONEDAY: 24 * 60 * 60 * 1000,
 
-		toArray: function(thing) {
+			toArray: function(thing) {
 
-			return Array.prototype.slice.call(thing);
+				return Array.prototype.slice.call(thing);
 
-		},
+			},
 
-		strCount: function(str, letter) {
+			strCount: function(str, letter) {
 
-			var arr = str.split(""),
-				count = 0;
+				var arr = str.split(""),
+					count = 0;
 
-			for (var i = str.indexOf(letter); i < arr.length; i++) {
+				for (var i = str.indexOf(letter); i < arr.length; i++) {
 
-				if (arr[i] === letter) {
+					if (arr[i] === letter) {
 
-					count += 1;
+						count += 1;
+
+					}
+
+				}
+
+				return count;
+
+			},
+
+			formatLength: function(thing, length) {
+
+				var newStr = thing + "",
+					diff = length - newStr.length,
+					i = 0;
+
+				if (diff >= 0) {
+
+					for (i = 0; i < diff; i++) {
+
+						newStr = "0" + newStr;
+
+					}
+
+				} else {
+
+					for (i = 0; i < -diff; i++) {
+
+						newStr = newStr.substring(1);
+
+					} 
+
+				}
+
+				return newStr;
+
+			},
+
+			generateDate: function() {
+
+				var args = Utils.toArray(arguments);
+
+				if (args.length === 3) {
+
+					return [Utils.formatLength(args[0], 4), Utils.formatLength(args[1], 2), Utils.formatLength(args[2], 2)].join("-");
+
+				} else if (args[0] instanceof Date) {
+
+					var year = args[0].getFullYear(),
+						month = args[0].getMonth() + 1,
+						date = args[0].getDate();
+
+					return [Utils.formatLength(year, 4), Utils.formatLength(month, 2), Utils.formatLength(date, 2)].join("-"); 
 
 				}
 
 			}
 
-			return count;
-
-		},
-
-		formatLength: function(thing, length) {
-
-			var newStr = thing + "",
-				diff = length - newStr.length,
-				i = 0;
-
-			if (diff >= 0) {
-
-				for (i = 0; i < diff; i++) {
-
-					newStr = "0" + newStr;
-
-				}
-
-			} else {
-
-				for (i = 0; i < -diff; i++) {
-
-					newStr = newStr.substring(1);
-
-				} 
-
-			}
-
-			return newStr;
-
-		},
-
-		generateDate: function() {
-
-			var args = Utils.toArray(arguments);
-
-			if (args.length === 3) {
-
-				return [Utils.formatLength(args[0], 4), Utils.formatLength(args[1], 2), Utils.formatLength(args[2], 2)].join("-");
-
-			} else if (args[0] instanceof Date) {
-
-				var year = args[0].getFullYear(),
-					month = args[0].getMonth() + 1,
-					date = args[0].getDate();
-
-				return [Utils.formatLength(year, 4), Utils.formatLength(month, 2), Utils.formatLength(date, 2)].join("-"); 
-
-			}
-
-		}
-
-	};
+		};
 
 	var Vdate = function(date) {
 
@@ -94,12 +94,6 @@
 		toString: function() {
 
 			return Utils.generateDate(this.proto);
-
-		},
-
-		isValid: function() {
-
-			return this.proto.toString() !== "Invalid Date";
 
 		},
 

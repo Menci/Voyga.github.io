@@ -8,8 +8,6 @@
 
 	var Vcordova = {
 
-		isCordova: isCordova,
-
 		ready: function(callback) {
 
 			if (isCordova) {
@@ -87,22 +85,6 @@
 				if (screenshot) {
 
 					screenshot.save(callback, format, quality, name);
-
-				}
-
-			}
-
-		},
-
-		vibrate: function(time) {
-
-			if (isCordova) {
-
-				var vibrate = navigator.vibrate;
-
-				if (vibrate) {
-
-					vibrate(time);
 
 				}
 

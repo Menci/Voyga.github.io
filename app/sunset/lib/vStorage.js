@@ -6,6 +6,30 @@
 
 	var Utils = {
 
+		toString: function(val) {
+
+			return Object.prototype.toString.call(val);
+
+		},
+
+		isArr: function(val) {
+
+			return Array.isArray(val) || toString(val) === "[object Array]";
+
+		},
+
+		isObj: function(val) {
+
+			return toString(val) === "[object Object]";
+
+		},
+
+		isNum: function(val) {
+
+			return toString(val) === "[object Number]" && val === val;
+
+		},
+
 		get: function(name) {
 
 			return JSON.parse(window.localStorage.getItem(name));
@@ -28,16 +52,19 @@
 
 	var Storage = function(name, init) {
 
+		var data = Utils.get(name);
 		this.name = name;
-		this.init = init === undefined ? [] : init;
 
-		if (Utils.get(name)) {
+		if (data) {
 
-			this.data = Utils.get(name);
+			this.data = data;
 
 		} else {
 
-			this.reset();
+			init = init === undefined ? [] : init;
+			this.data = init;
+
+			Utils.set(name, init);
 
 		}
 
@@ -59,10 +86,60 @@
 
 		},
 
-		reset: function() {
+		set: function(val) {
 
-			this.data = this.init;
+			this.data = val;
 			this.save();
+
+			return this;
+
+		},
+
+		add: function(val) {
+
+			if (Utils.isArr(this.data)) {
+
+				this.data.push(val);
+				this.save();
+
+			}
+
+			return this;
+
+		},
+
+		includes: function(val) {
+
+			if (Utils.isArr(this.data)) {
+
+				return this.data.indexOf(val) !== -1;
+
+			} else if (Utils.isObj(this.data)) {
+
+				return this.data.hasOwnProperty(val);
+
+			}
+
+			return false;
+
+		},
+
+		delete: function(val) {
+
+			if (Utils.isArr(this.data)) {
+
+				var index = Utils.isNum(val) ? val : this.data.indexOf(val);
+
+				if (index !== -1) {
+
+					this.data.splice(index, 1);
+					this.save();
+
+				}
+
+				return this;
+
+			}
 
 			return this;
 

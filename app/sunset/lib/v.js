@@ -20,7 +20,13 @@
 
 	"use strict";
 
-	var _ = {
+	var Utils = {
+
+		toArray: function(thing) {
+
+			return Array.prototype.slice.call(thing);
+
+		},
 
 		getEl: function(thing) {
 
@@ -50,9 +56,9 @@
 
 	};
 
-	function V(name) {
+	var V = function(name) {
 
-		var el = _.getEl(name);
+		var el = Utils.getEl(name);
 
 		if (this instanceof V) {
 
@@ -81,273 +87,269 @@
 
 		}
 
-	}
-
-	V.prototype.css = function(prop, value) {
-
-		if (value === undefined) {
-
-			if (this.el.currentStyle) {
-
-				return this.el.currentStyle[prop];
-
-			} else if (window.getComputedStyle) {
-
-				return window.getComputedStyle(this.el).getPropertyvalue(prop);
-
-			}
-
-		} else {
-
-			var webkit = [["transform", "animation"], ["WebkitTransform", "WebkitAnimation"]];
-			var index = webkit[0].indexOf(prop);
-
-			this.el.style[prop] = value;
-
-			if (index !== -1) {
-
-				this.el.style[webkit[1][index]] = value;
-
-			}
-
-			return this;
-
-		}
-
 	};
 
-	V.prototype.appear = function() {
+	V.prototype = {
 
-		this.css("opacity", "1");
+		css: function(prop, val) {
 
-		return this;
+			if (val === undefined) {
 
-	};
+				if (this.el.currentStyle) {
 
-	V.prototype.disappear = function() {
+					return this.el.currentStyle[prop];
 
-		this.css("opacity", "0");
+				} else if (window.getComputedStyle) {
 
-		return this;
-
-	};
-
-	V.prototype.width = function(value) {
-
-		if (value === undefined) {
-
-			return this.el.offsetWidth;
-
-		} else {
-
-			this.css("width", value + "px");
-
-			return this;
-
-		}
-
-	};
-
-	V.prototype.height = function(value) {
-
-		if (value === undefined) {
-
-			return this.el.offsetHeight;
-
-		} else {
-
-			this.css("height", value + "px");
-
-			return this;
-
-		}
-
-	};
-
-	V.prototype.data = function(name, value) {
-
-		if (value === undefined) {
-
-			return this.el.dataset[name];
-
-		} else {
-
-			this.el.dataset[name] = value;
-
-			return this;
-
-		}
-
-	};
-
-	V.prototype.attr = function(prop, value) {
-
-		if (value === undefined) {
-
-			if (typeof prop === "object") {
-
-				for (var val in prop) {
-
-					this.el.setAttribute(val, prop[val]);
+					return window.getComputedStyle(this.el).getPropertyValue(prop);
 
 				}
 
 			} else {
 
-				return this.el.getAttribute(prop);
+				var webkit = [["transform", "animation"], ["WebkitTransform", "WebkitAnimation"]],
+					index = webkit[0].indexOf(prop);
+
+				this.el.style[prop] = val;
+
+				if (index !== -1) {
+
+					this.el.style[webkit[1][index]] = val;
+
+				}
+
+				return this;
 
 			}
 
-		} else {
+		},
 
-			this.el.setAttribute(prop, value);
+		appear: function() {
 
-			return this;
-
-		}
-
-	};
-
-	V.prototype.append = function(parent) {
-
-		if (parent.el) {
-
-			this.el.appendChild(parent.el);
-
-		} else {
-
-			this.el.appendChild(parent);
-
-		}
-
-	};
-
-	V.prototype.remove = function(child) {
-
-		if (child.el) {
-
-			this.el.removeChild(child.el);
-
-		} else {
-
-			this.el.removeChild(child);
-
-		}
-
-	};
-
-	V.prototype.suicide = function() {
-
-		this.el.parentNode.removeChild(this.el);
-
-	};
-
-	V.prototype.html = function(content) {
-
-		if (content === undefined) {
-
-			return this.el.innerHTML;
-
-		} else {
-
-			this.el.innerHTML = content;
+			this.css("opacity", "1");
 
 			return this;
 
-		}
+		},
 
-	};
+		disappear: function() {
 
-	V.prototype.val = function(content) {
-
-		var method = this.el.tagName === "INPUT" || this.el.tagName === "TEXTAREA" ? "value" : "textContent";
-
-		if (content === undefined) {
-
-			return this.el[method];
-
-		} else {
-
-			this.el[method] = content;
+			this.css("opacity", "0");
 
 			return this;
 
-		}
+		},
 
-	};
+		width: function(value) {
 
-	V.prototype.index = function() {
+			if (value === undefined) {
 
-		var siblings = this.el.parentNode.children;
-		var index = -1;
+				return this.el.offsetWidth;
 
-		for (var i = 0; i < siblings.length; i++) {
+			} else {
 
-			if (siblings[i] === this.el) {
+				this.css("width", value + "px");
 
-				index = i;
-
-				break;
+				return this;
 
 			}
 
-		}
+		},
 
-		return index;
+		height: function(value) {
 
-	};
+			if (value === undefined) {
 
-	V.prototype.scrollTop = function(value) {
+				return this.el.offsetHeight;
 
-		if (value === undefined) {
+			} else {
 
-			return this.el.scrollTop;
+				this.css("height", value + "px");
 
-		} else {
+				return this;
 
-			this.el.scrollTop = value;
+			}
 
-			return this;
+		},
 
-		}
+		data: function(name, val) {
 
-	};
+			if (val === undefined) {
 
-	V.prototype.call = function(func, param) {
+				return this.el.dataset[name];
 
-		if (typeof this.el[func] === "function") {
+			} else {
 
-			this.el[func](param);
+				this.el.dataset[name] = val;
 
-		}
+				return this;
 
-		return this;
+			}
 
-	};
+		},
 
-	V.prototype.prop = function(prop, val) {
+		attr: function(prop, value) {
 
-		if (val === undefined) {
+			if (value === undefined) {
 
-			return this.el[prop];
+				if (typeof prop === "object") {
 
-		} else {
+					for (var val in prop) {
 
-			this.el[prop] = val;
+						this.el.setAttribute(val, prop[val]);
 
-			return this;
+					}
 
-		}
+				} else {
 
-	};
+					return this.el.getAttribute(prop);
 
-	V.prototype.on = function(moves, callback) {
+				}
 
-		moves = moves.split(" ");
+			} else {
 
-		for (var i = 0; i < moves.length; i++) {
+				this.el.setAttribute(prop, value);
 
-			this.el.addEventListener(moves[i], callback);
+				return this;
+
+			}
+
+		},
+
+		append: function(parent) {
+
+			if (parent.el) {
+
+				this.el.appendChild(parent.el);
+
+			} else {
+
+				this.el.appendChild(parent);
+
+			}
+
+		},
+
+		remove: function(parent) {
+
+			if (parent.el) {
+
+				this.el.removeChild(parent.el);
+
+			} else {
+
+				this.el.removeChild(parent);
+
+			}
+
+		},
+
+		suicide: function() {
+
+			this.el.parentNode.removeChild(this.el);
+
+		},
+
+		html: function(content) {
+
+			if (content === undefined) {
+
+				return this.el.innerHTML;
+
+			} else {
+
+				this.el.innerHTML = content;
+
+				return this;
+
+			}
+
+		},
+
+		val: function(content) {
+
+			var method = this.el.tagName === "INPUT" || this.el.tagName === "TEXTAREA" ? "value" : "textContent";
+
+			if (content === undefined) {
+
+				return this.el[method];
+
+			} else {
+
+				this.el[method] = content;
+
+				return this;
+
+			}
+
+		},
+
+		index: function() {
+
+			var siblings = this.el.parentNode.children,
+				index = -1;
+
+			for (var i = 0; i < siblings.length; i++) {
+
+				if (siblings[i] === this.el) {
+
+					index = i;
+
+					break;
+
+				}
+
+			}
+
+			return index;
+
+		},
+
+		scrollTop: function(value) {
+
+			if (value === undefined) {
+
+				return this.el.scrollTop;
+
+			} else {
+
+				this.el.scrollTop = value;
+
+				return this;
+
+			}
+
+		},
+
+		call: function(func, param) {
+
+			if (typeof this.el[func] === "function") {
+
+				this.el[func](param);
+
+			}
+
+		},
+
+		prop: function(prop) {
+
+			if (this.el[prop]) {
+
+				return this.el[prop];
+
+			}
+
+		},
+
+		on: function(moves, callback) {
+
+			moves = moves.split(" ");
+
+			for (var i = 0; i < moves.length; i++) {
+
+				this.el.addEventListener(moves[i], callback);
+
+			}
 
 		}
 
