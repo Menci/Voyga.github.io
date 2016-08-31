@@ -33,7 +33,7 @@ Vue.directive("icon", {
 		const icon = this.expression;
 
 		element.classList.add("iconBox");
-		element.html("<i class='icon ion-" + icon + " center'></i>")
+		element.html("<i class='icon icon-" + icon + " center'></i>")
 
 	}
 

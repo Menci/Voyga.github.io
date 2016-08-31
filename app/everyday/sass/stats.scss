@@ -1,0 +1,73 @@
+// Voyga
+
+#stats
+{
+    > .title
+    {
+        font-family: $regular;
+        font-size: 20px;
+
+        margin-top: 48px;
+
+        text-align: center;
+
+        color: #aaa;
+    }
+    .delete
+    {
+        position: relative;
+
+        margin: 48px auto;
+        .title
+        {
+            font-family: $regular;
+            font-size: 18px;
+
+            color: #aaa;
+        }
+        .first
+        {
+            position: absolute;
+            top: 40px;
+
+            transition: .5s;
+            -webkit-transform: translate(-50%, 0);
+                    transform: translate(-50%, 0);
+
+            opacity: 1;
+
+            @extend .horiCenter;
+            &.deleting
+            {
+                -webkit-transform: translate(-50%, -48px);
+                        transform: translate(-50%, -48px);
+
+                opacity: 0;
+            }
+        }
+        .second
+        {
+            position: absolute;
+            top: 40px;
+
+            transition: .5s;
+            -webkit-transform: translate(-50%, 48px);
+                    transform: translate(-50%, 48px);
+
+            opacity: 0;
+
+            @extend .horiCenter;
+            .button {
+                margin-left: 4px;
+                margin-right: 4px;
+            }
+            &.deleting
+            {
+                -webkit-transform: translate(-50%, 0);
+                        transform: translate(-50%, 0);
+
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -1,12 +1,5 @@
 // Voyga
 
-import "./../lib/vue.min";
-import "./../lib/fastclick.min";
-import "./../lib/thumbs.min";
-import "./../lib/moment.min";
-import "./../lib/cordovaUtils.min";
-import "./../lib/store.min";
-import "./../lib/v.min";
 import "./directives";
 import "./filters";
 
@@ -46,32 +39,58 @@ new Vue({
 		accomplish() {
 
 			const index = this.index.data;
+			const days = moment().diff(moment(this.habits.data[index].start, "MM-DD-YYYY"), "days");
 
-			if (this.accomplished) {
+			if (this.ifAccomplished(index)) {
 
-				this.habits.data[index].last = moment().subtract(1, "d").format("MM-DD-YYYY");
+				this.habits.data[index].calendar[days] = false;
 
 			} else {
 
-				this.habits.data[index].last = moment().format("MM-DD-YYYY");
+				this.habits.data[index].calendar[days] = true;
 
 			}
 
+			this.habits.data[index].calendar = this.habits.data[index].calendar.slice();
 			this.habits.save();
 
 		},
 
 		ifAccomplished(index) {
 
-			return this.habits.data[index].last === moment().format("MM-DD-YYYY");
+			const days = moment().diff(moment(this.habits.data[index].start, "MM-DD-YYYY"), "days");
+
+			return this.habits.data[index].calendar[days];
 
 		},
 
 		getStreak(index) {
 
 			const habit = this.habits.data[index];
+			const length = habit.calendar.length;
+			let streak = 0;
 
-			return moment(habit.last, "MM-DD-YYYY").diff(moment(habit.start, "MM-DD-YYYY"), "d") + 1;
+			for (let i = length - 2; i >= 0 ; i--) {
+
+				if (habit.calendar[i]) {
+
+					streak += 1;
+
+				} else {
+
+					break;
+
+				}
+
+			}
+
+			if (habit.calendar[length - 1]) {
+
+				streak += 1;
+
+			}
+
+			return streak;
 
 		},
 
@@ -86,7 +105,7 @@ new Vue({
 
 					name: inputs.name,
 					start: moment().format("MM-DD-YYYY"),
-					last: moment().subtract(1, "d").format("MM-DD-YYYY")
+					calendar: [false]
 
 				});
 
@@ -97,6 +116,21 @@ new Vue({
 				this.index.set(habits.data.length - 1);
 
 			}
+
+		},
+
+		delete() {
+
+			this.habits.data.splice(this.index.data, 1);
+			this.habits.save();
+			this.toPage("main");
+
+		},
+
+		toPage(page) {
+
+			this.page = page;
+			Object.keys(this.status).forEach(i => this.status[i] = false);
 
 		}
 
@@ -138,25 +172,31 @@ new Vue({
 
 	},
 
-	ready() {
+	created() {
 
 		for (let i = 0; i < this.habits.data.length; i++) {
 
-			if (moment().diff(moment(this.habits.data[i], "MM-DD-YYYY"), "d") > 1) {
+			let days = moment().diff(moment(this.habits.data[i].start, "MM-DD-YYYY"), "days");
 
-				this.habits.data[i].start = moment().format("MM-DD-YYYY");
-				this.habits.data[i].last = moment().subtract(1, "d").format("MM-DD-YYYY");
-				this.habits.save();
+			for (let j = 0; j < days - this.habits.data[i].calendar.length + 1; j++) {
+
+				this.habits.data[i].calendar.push(false);
 
 			}
 
 		}
+
+		this.habits.save();
 
 		if (!this.currentHabit) {
 
 			this.index.set(this.habits.data.length - 1);
 
 		}
+
+	},
+
+	ready() {
 
 		CordovaUtils.ready(() => {
 

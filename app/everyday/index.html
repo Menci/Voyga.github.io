@@ -9,12 +9,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1" />
     <meta name="author" content="Voyga" />
-    <meta name="description" content="Do One Thing Everyday and Make it a Habit" />
+    <meta name="description" content="Minimal Habit Forming App" />
     <link rel="stylesheet" href="lib/v.min.css" />
-    <link rel="stylesheet" href="lib/ionicons.min.css" />
+    <link rel="stylesheet" href="iconFont/icon.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" href="icon/icon.png" />
     <script src="cordova.js"></script>
+    <script src="lib/fastclick.min.js"></script>
+    <script src="lib/thumbs.min.js"></script>
+    <script src="lib/moment.min.js"></script>
+    <script src="lib/vue.min.js"></script>
+    <script src="lib/cordovaUtils.min.js"></script>
+    <script src="lib/store.min.js"></script>
+    <script src="lib/v.min.js"></script>
     <title>Everyday</title>
 
     </head>
@@ -29,16 +36,17 @@
 
             <div class="header">
 
-                <div v-on:click="page = 'list'" v-icon="navicon" v-pressing-class="pressing"></div>
+                <div v-on:click="page = 'list'" v-icon="list" v-pressing-class="pressing"></div>
+                <div v-on:click="page = 'stats'" v-icon="stats" v-if="!empty" v-pressing-class="pressing"></div>
 
                 <div class="center" v-if="!empty">
-                    
+
                     <div class="ball" v-bind:class="{ 'light': accomplished }"></div>
                     <span></span>
                     <p class="title" v-text="currentHabit.name"></p>
 
                     </div>
-                
+
                 </div>
 
             <div class="day" v-if="!empty">
@@ -51,11 +59,11 @@
 
                         <p class="days" v-text="'day' | pluralfy streak | uppercase"></p>
                         <p class="since" v-text="since"></p>
-                        
+
                         </div>
-                    
+
                     </div>
-                
+
                 </div>
 
             <div class="accomplish" v-if="!empty">
@@ -63,25 +71,25 @@
                 <div class="center">
 
                     <button class="button" v-on:click="accomplish()" v-bind:class="{ 'accomplished': accomplished }" v-text="accomplished ? 'Accomplished' : 'Accomplished Today ?'"></button>
-                    
+
                     </div>
-                
+
                 </div>
 
             <div class="emptymsg" v-if="empty">
 
                 <p>No Habits</p>
-                <p>Tap <span v-icon="navicon-round"></span> then <span v-icon="plus-round"></span> a habit</p>
-                
+                <p>Tap <span v-icon="list"></span> then <span v-icon="plus"></span> a habit</p>
+
                 </div>
-            
+
             </div>
-        
+
         </div>
 
     <div id="list" class="page" v-bind:class="{ 'show': page === 'list' }">
 
-        <p class="title" v-on:click="page = 'main'">~ Habits ~</p>
+        <p class="title" v-on:click="toPage('main')">~ Habits ~</p>
 
         <div class="list">
 
@@ -91,32 +99,57 @@
 
                     <p class="title" v-text="habit.name" v-bind:class="{ 'current': currentHabit.name === habit.name }"></p>
                     <p class="streak" v-text="getStreak($index) + ' day' | pluralfy"></p>
-                    
+
                     </div>
 
-                <div v-icon="android-arrow-forward"></div>
+                <div v-icon="forward"></div>
 
                 </div>
-            
+
             </div>
 
-        <div class="addIcon" v-icon="ios-plus-empty" v-on:click="status.adding = !status.adding" v-bind:class="{ 'adding': status.adding }"></div>
+        <div class="addIcon" v-icon="plus" v-on:click="status.adding = !status.adding" v-bind:class="{ 'adding': status.adding }"></div>
 
         <div class="addBox" v-bind:class="{ 'adding': status.adding }">
 
             <div class="center">
 
                 <input class="input" placeholder="new habit" type="text" v-model="inputs.name" />
-                <button class="button" v-on:click="add()" v-pressing-class="pressing">ADD</button>
+                <button class="button blue" v-on:click="add()" v-pressing-class="pressing">ADD</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    <div id="stats" class="page" v-bind:class="{ 'show': page === 'stats' }">
+
+        <p class="title" v-on:click="toPage('main')">~ Stats ~</p>
+
+        <div class="delete">
+
+            <p class="title" v-text="status.deleting ? 'Are You Sure?' : 'Delete Habit'"></p>
+            
+            <div class="first" v-bind:class="{ 'deleting': status.deleting }">
+                
+                <button class="button red" v-on:click="status.deleting = true" v-pressing-class="pressing">DELETE</button>
+
+                </div>
+
+            <div class="second" v-bind:class="{ 'deleting': status.deleting }">
+                
+                <button class="button red" v-on:click="delete()" v-pressing-class="pressing">YES</button>
+                <button class="button red" v-on:click="status.deleting = false" v-pressing-class="pressing">NO</button>
                 
                 </div>
-            
+
             </div>
-        
+
         </div>
 
     <script src="dist/app.js"></script>
-        
+
     </body>
 
 </html>
