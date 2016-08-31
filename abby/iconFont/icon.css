@@ -1,0 +1,43 @@
+@font-face
+{
+    font-family: 'Abby';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('Abby.eot?82l8vf');
+    src: url('Abby.eot?82l8vf#iefix') format('embedded-opentype'),
+    url('Abby.ttf?82l8vf') format('truetype'),
+    url('Abby.woff?82l8vf') format('woff'),
+    url('Abby.svg?82l8vf#Abby') format('svg');
+}
+
+[class^='icon-'],
+[class*=' icon-']
+{
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'Abby' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+
+    text-transform: none;
+
+    speak: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-down:before
+{
+    content: '\e900';
+}
+.icon-paw:before
+{
+    content: '\e901';
+}
+.icon-up:before
+{
+    content: '\e902';
+}
